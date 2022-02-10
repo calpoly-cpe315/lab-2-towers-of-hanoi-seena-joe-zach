@@ -19,14 +19,26 @@ startstring:
 
     .global	towers
 towers:
-   /* Save calllee-saved registers to stack */
+   /* Save callee-saved registers to stack. We will need 5 so
+      we save x19-x22 and w19 also we save the return address*/
+      sub sp, sp, 64
+      stp x30, [sp]
+      stp x19, [sp, 8]
+      stp x20, [sp, 16]
+      stp x21, [sp, 24]
+      stp x22, [sp, 32]
+      stp w19, [sp, 40]
    
    /* Save a copy of all 3 incoming parameters to callee-saved registers */
-
+      ldr w19, w0 /* numDisks */
+      ldr x19, x1 /* Start */
+      ldr x20, x2 /* Goal */
+      
 if:
    /* Compare numDisks with 2 or (numDisks - 2)*/
+      cmp [w19, -2], 0 
    /* Check if less than, else branch to else */
-   
+      bne else
    /* set print function's start to incoming start */
    /* set print function's end to goal */
    /* call print function */
@@ -56,7 +68,17 @@ else:
 
 endif:
    /* Restore Registers */
+      ldr x30, [sp]
+      ldr x19, [sp, 8]
+      ldr x20, [sp, 16]
+      ldr x21, [sp, 24]
+      ldr x22, [sp, 32]
+      ldr w19, [sp, 40]
+      add sp, sp, 64
+
    /* Return from towers function */
+      ret     
+
 
 @ Function main is complete, no modifications needed
     .global	main
