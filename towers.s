@@ -22,12 +22,12 @@ towers:
    /* Save callee-saved registers to stack. We will need 5 so
       we save x19-x22 and w19 also we save the return address*/
       sub sp, sp, 64
-      stp x30, [sp]
-      stp x19, [sp, 8]  /*start*/
-      stp x20, [sp, 16] /*goal*/
-      stp x21, [sp, 24] /*temp*/
-      stp x22, [sp, 32] /*total-steps*/
-      stp w19, [sp, 40] /*numDisks*/
+      str x30, [sp]
+      str x19, [sp, 8]  /*start*/
+      str x20, [sp, 16] /*goal*/
+      str x21, [sp, 24] /*temp*/
+      str x22, [sp, 32] /*total-steps*/
+      str w19, [sp, 40] /*numDisks*/
    
    /* Save a copy of all 3 incoming parameters to callee-saved registers */
       ldr w19, w0 /* numDisks */
