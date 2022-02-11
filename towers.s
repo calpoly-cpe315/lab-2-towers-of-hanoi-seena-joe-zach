@@ -46,14 +46,14 @@ if:
    /* call print function */
       bl print
    /* Set return register to 1 */
-      add x1, xzr, 1
+      mov x1, 1
    /* branch to endif */
       b endif
  
  
 else:
    /* Use a callee-saved variable for temp and set it to 6 */
-      add x21, xzr, 6
+      mov x21, 6
    /* Subtract start from temp and store to itself */
       sub x21, x21, x19
    /* Subtract goal from temp and store to itself (temp = 6 - start - goal)*/
@@ -67,7 +67,7 @@ else:
    /* Save result to callee-saved register for total steps */
       mov x22, x1
    /* Set numDiscs parameter to 1 */
-      add w0, wzr, 1
+      mov w0, 1
    /* Set start parameter to original start */
       mov x1, x19
    /* Set goal parameter to original goal */
