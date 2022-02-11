@@ -70,7 +70,7 @@ else:
       mov x22, x1
    /* Set numDiscs parameter to 1 */
       mov w0, wzr
-      add w0, 1
+      add w0, w0, 1
    /* Set start parameter to original start */
       mov x1, x19
    /* Set goal parameter to original goal */
