@@ -3,6 +3,14 @@ Towers of Hanoi
 
 Add your name and project status here.
 
+Names:
+Joseph O'Gara
+Seena Abed
+Zach Riley
+
+Project status:
+complete
+
 The ``towers.s`` file is what you will modifiy. There are comments
 to guide your implementation.
 
