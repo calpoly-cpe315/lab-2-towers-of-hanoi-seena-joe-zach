@@ -65,7 +65,7 @@ else:
    /* Call towers function */
       bl towers
    /* Save result to callee-saved register for total steps */
-      mov x22, x1
+      mov x22, x0
    /* Set numDiscs parameter to 1 */
       mov w0, 1
    /* Set start parameter to original start */
