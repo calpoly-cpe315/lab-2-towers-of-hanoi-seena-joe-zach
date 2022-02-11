@@ -44,7 +44,7 @@ if:
    /* set print function's end to goal */
       mov x1, x20
    /* call print function */
-      b print
+      bl print
    /* Set return register to 1 */
       mov x1, 1
    /* branch to endif */
