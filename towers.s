@@ -30,9 +30,9 @@ towers:
       str w19, [sp, 40] /*numDisks*/
    
    /* Save a copy of all 3 incoming parameters to callee-saved registers */
-      ldr w19, w0 /* numDisks */
-      ldr x19, x1 /* Start */
-      ldr x20, x2 /* Goal */
+      mov w19, w0 /* numDisks */
+      mov x19, x1 /* Start */
+      mov x20, x2 /* Goal */
      
 if:
    /* Compare numDisks with 2 or (numDisks - 2)*/
@@ -40,13 +40,13 @@ if:
    /* Check if less than, else branch to else */
       bne else
    /* set print function's start to incoming start */
-      ldr x0, x19
+      mov x0, x19
    /* set print function's end to goal */
-      ldr x1, x20
+      mov x1, x20
    /* call print function */
       bl print
    /* Set return register to 1 */
-      ldr x1, xzr
+      mov x1, xzr
       add x1, x1, 1
    /* branch to endif */
       b endif
@@ -54,7 +54,7 @@ if:
  
 else:
    /* Use a callee-saved variable for temp and set it to 6 */
-      ldr x21, xzr
+      mov x21, xzr
       add x21, x21, 6
    /* Subtract start from temp and store to itself */
       sub x21, x21, x19
@@ -63,27 +63,28 @@ else:
    /*subtract 1 from original numDisks and store it to numDisks parameter */
       sub w0, w19, 1
    /* Set end parameter as temp */
-      ldr x2, x21
+      mov x2, x21
    /* Call towers function */
       bl towers
    /* Save result to callee-saved register for total steps */
-      ldr x22, x1
+      mov x22, x1
    /* Set numDiscs parameter to 1 */
-      ldr w0, 1
+      mov w0, wzr
+      add w0, 1
    /* Set start parameter to original start */
-      ldr x1, x19
+      mov x1, x19
    /* Set goal parameter to original goal */
-      ldr x2, x20	
+      mov x2, x20	
    /* Call towers function */
       bl towers
    /* Add result to total steps so far */
    
    /* Set numDisks parameter to original numDisks - 1 */
-      ldr w0, w20
+      mov w0, w20
    /* set start parameter to temp */
-      ldr x1, x21
+      mov x1, x21
    /* set goal parameter to original goal */
-      ldr x2, x20
+      mov x2, x20
    /* Call towers function */
       bl towers
    /* Add result to total steps so far and save it to return register */
@@ -102,7 +103,7 @@ endif:
       ret    
  
  
-*/ Function main is complete, no modifications needed */
+/* Function main is complete, no modifications needed */
     .global main
 main:
       stp    x29, x30, [sp, -32]!
