@@ -86,7 +86,7 @@ else:
    /* Call towers function */
       bl towers
    /* Add result to total steps so far and save it to return register */
-      add x1, x1, x22
+      add x0, x0, x22
 endif:
    /* Restore Registers */
       ldr x30, [sp]
