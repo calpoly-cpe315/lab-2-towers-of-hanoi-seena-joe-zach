@@ -78,6 +78,7 @@ else:
       add x22, x1, x22
    /* Set numDisks parameter to original numDisks - 1 */
       mov w0, w20
+      sub w0, w0, 1
    /* set start parameter to temp */
       mov x1, x21
    /* set goal parameter to original goal */
