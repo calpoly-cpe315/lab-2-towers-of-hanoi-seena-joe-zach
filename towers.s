@@ -71,11 +71,11 @@ else:
    /* Set start parameter to original start */
       mov x1, x19
    /* Set goal parameter to original goal */
-      mov x2, x20	
+      mov x2, x20
    /* Call towers function */
       bl towers
    /* Add result to total steps so far */
-      add x22, x1, x22
+      add x22, x0, x22
    /* Set numDisks parameter to original numDisks - 1 */
       mov w0, w23
       sub w0, w0, 1
