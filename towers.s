@@ -46,7 +46,7 @@ if:
    /* call print function */
       bl print
    /* Set return register to 1 */
-      mov x1, 1
+      mov x0, 1
    /* branch to endif */
       b endif
  
