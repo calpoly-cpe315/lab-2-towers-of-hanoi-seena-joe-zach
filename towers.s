@@ -1,7 +1,7 @@
    .arch armv8-a
    .text
  
-@ print function is complete, no modifications needed
+/* print function is complete, no modifications needed */
     .global print
 print:
       stp    x29, x30, [sp, -16]! //Store FP, LR.
@@ -46,14 +46,16 @@ if:
    /* call print function */
       bl print
    /* Set return register to 1 */
-      ldr x1, 1
+      ldr x1, xzr
+      add x1, x1, 1
    /* branch to endif */
       b endif
  
  
 else:
    /* Use a callee-saved variable for temp and set it to 6 */
-      ldr x21, 6
+      ldr x21, xzr
+      add x21, x21, 6
    /* Subtract start from temp and store to itself */
       sub x21, x21, x19
    /* Subtract goal from temp and store to itself (temp = 6 - start - goal)*/
@@ -65,7 +67,7 @@ else:
    /* Call towers function */
       bl towers
    /* Save result to callee-saved register for total steps */
-      ldr x22,x1
+      ldr x22, x1
    /* Set numDiscs parameter to 1 */
       ldr w0, 1
    /* Set start parameter to original start */
@@ -100,7 +102,7 @@ endif:
       ret    
  
  
-@ Function main is complete, no modifications needed
+*/ Function main is complete, no modifications needed */
     .global main
 main:
       stp    x29, x30, [sp, -32]!
