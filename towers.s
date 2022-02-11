@@ -27,16 +27,16 @@ towers:
       str x20, [sp, 16] /*goal*/
       str x21, [sp, 24] /*temp*/
       str x22, [sp, 32] /*total-steps*/
-      str w19, [sp, 40] /*numDisks*/
+      str w23, [sp, 40] /*numDisks*/
    
    /* Save a copy of all 3 incoming parameters to callee-saved registers */
-      mov w19, w0 /* numDisks */
+      mov w23, w0 /* numDisks */
       mov x19, x1 /* Start */
       mov x20, x2 /* Goal */
      
 if:
    /* Compare numDisks with 2 or (numDisks - 2)*/
-      cmp w19, 1
+      cmp w23, 1
    /* Check if less than, else branch to else */
       bne else
    /* set print function's start to incoming start */
@@ -59,7 +59,7 @@ else:
    /* Subtract goal from temp and store to itself (temp = 6 - start - goal)*/
       sub x21, x21, x20
    /*subtract 1 from original numDisks and store it to numDisks parameter */
-      sub w0, w19, 1
+      sub w0, w23, 1
    /* Set end parameter as temp */
       mov x2, x21
    /* Call towers function */
@@ -77,7 +77,7 @@ else:
    /* Add result to total steps so far */
       add x22, x1, x22
    /* Set numDisks parameter to original numDisks - 1 */
-      mov w0, w20
+      mov w0, w23
       sub w0, w0, 1
    /* set start parameter to temp */
       mov x1, x21
@@ -94,7 +94,7 @@ endif:
       ldr x20, [sp, 16]
       ldr x21, [sp, 24]
       ldr x22, [sp, 32]
-      ldr w19, [sp, 40]
+      ldr w23, [sp, 40]
       add sp, sp, 64
  
    /* Return from towers function */
